@@ -10,7 +10,16 @@ while(True):
 	faces = face_cascade.detectMultiScale(gray, scaleFactor = 1.5, minNeighbors = 5) #membuat variable baru
 	for (x, y, w, h) in faces:
 		print(x,y,w,h)
-	cv2.imshow('frame',frame) #menampilkan gambar di jendela
+		roi_gray = gray[y:y+h, x:x+w] # dengan pixel gray
+		roi_color = frame[y:y+h, x:x+w] # dengan pixel berwarna
+		img_item = "my-image.png" #nama file yang di save
+		cv2.imwrite(img_item, roi_color) # menyimpan gambar sesaui dengan config
+		color = (255, 0, 0) #BGR 0-255
+		stroke = 2
+		end_cord_x = x + w
+		end_cord_y = y + h
+		cv2.rectangle(frame, (x,y), (end_cord_x, end_cord_y), color, stroke)
+	cv2.imshow('frame',frame) #menmpilkan gambar di jendela
 	if cv2.waitkey(20) & 0xFF == ord('q'):
 		break
 
