@@ -1,0 +1,19 @@
+import numpy as np
+import cv2
+
+face_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_frontalface_alt2.xml')
+cap = cv2.VideoCapture(0)
+
+while(True):
+	ret, frame = cap.read() #membaca gambar dari kamera
+	gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY) #merubah menjadi grayscale
+	faces = face_cascade.detectMultiScale(gray, scaleFactor = 1.5, minNeighbors = 5) #membuat variable baru
+	for (x, y, w, h) in faces:
+		print(x,y,w,h)
+	cv2.imshow('frame',frame) #menampilkan gambar di jendela
+	if cv2.waitkey(20) & 0xFF == ord('q'):
+		break
+
+#fungsi exit untuk keluar dari program
+cap.release()
+cv2.destroyAllWindows()
