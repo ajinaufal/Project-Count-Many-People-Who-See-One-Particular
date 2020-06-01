@@ -26,7 +26,7 @@ while(True):
 		roi_color = frame[y:y+h, x:x+w] #(ycord_start, ycord_end) croping foto
 		
 		id_, conf = recognizer.predict(roi_gray)
-		if conf>=4 and conf <= 85: # recognise
+		if conf>=15 and conf <= 85: # recognise
 			print(id_)
 			print(labels[id_])
 			font = cv2.FONT_HERSHEY_SIMPLEX
