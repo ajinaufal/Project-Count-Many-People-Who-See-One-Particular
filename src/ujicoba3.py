@@ -79,7 +79,7 @@ while(True):
 		roi_gray = gray[y:y+h, x:x+w] # dengan pixel gray
 		roi_color = frame[y:y+h, x:x+w] # dengan pixel berwarna
 
-		id_, conf = recognizer.predict(roi_gray)
+		id_, conf = recognizer.predict(roi_color)
 		if conf>=4 and conf <= 85: # recognise
 			#print(id_)
 			print(labels[id_])

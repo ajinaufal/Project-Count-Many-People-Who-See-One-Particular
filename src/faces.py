@@ -25,7 +25,7 @@ while(True):
 		roi_gray = gray[y:y+h, x:x+w]
 		roi_color = frame[y:y+h, x:x+w] #(ycord_start, ycord_end) croping foto
 		
-		id_, conf = recognizer.predict(roi_gray)
+		id_, conf = recognizer.predict(roi_color)
 		if conf>=15 and conf <= 85: # recognise
 			print(id_)
 			print(labels[id_])
