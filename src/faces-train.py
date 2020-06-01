@@ -4,6 +4,7 @@ import numpy as np
 from PIL import Image
 import pickle
 
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 image_dir = os.path.join(BASE_DIR, "foto")
 
