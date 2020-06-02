@@ -14,4 +14,4 @@ ujicoba x.py is a trial program for appropriate feature placement. is currently 
 1. Create a folder with the name **foto**
 2. Put all the images used as initial recognition material in the folder **foto**
 3. In the terminal, use the command `python face-train.py` to make training file
-4. In the terminal, use the command `python ujicoba3.py` to run face learning
+4. In the terminal, use the command `python face-fix.py` to run face learning
