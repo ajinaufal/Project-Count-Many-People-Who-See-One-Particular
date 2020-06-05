@@ -17,7 +17,7 @@ cap = cv2.VideoCapture(1)
 
 while(True):
 	# capture frame-by-frame
-	ret, frame = cap.read()
+	ret, frame = detect_face()
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	faces = face_cascade.detectMultiScale(frame, scaleFactor=1.5, minNeighbors=5) #deteksi wajah
 	for (x, y, w, h) in faces:
@@ -25,18 +25,18 @@ while(True):
 		roi_gray = gray[y:y+h, x:x+w]
 		roi_color = frame[y:y+h, x:x+w] #(ycord_start, ycord_end) croping foto
 		
-		id_, conf = recognizer.predict(roi_color)
-		if conf>=15 and conf <= 85: # recognise
-			print(id_)
-			print(labels[id_])
-			font = cv2.FONT_HERSHEY_SIMPLEX
-			name = labels[id_]
-			color = (255, 255, 255)
-			stroke = 2
-			cv2.putText(frame, name, (x,y), font, 1, color, stroke, cv2.LINE_AA)
-		else:
-			img_item = "dataset/ujicoba"
-			cv2.imwrite(img_item, roi_color)
+		# id_, conf = recognizer.predict(roi_gray)
+		# if conf>=15 and conf <= 85: # recognise
+		# 	print(id_)
+		# 	print(labels[id_])
+		# 	font = cv2.FONT_HERSHEY_SIMPLEX
+		# 	name = labels[id_]
+		# 	color = (255, 255, 255)
+		# 	stroke = 2
+		# 	cv2.putText(frame, name, (x,y), font, 1, color, stroke, cv2.LINE_AA)
+		# else:
+		# 	img_item = "dataset"
+		# 	cv2.imwrite(img_item, roi_color)
 
 		color = (255, 0, 0) #bgr 0-255
 		stroke = 2

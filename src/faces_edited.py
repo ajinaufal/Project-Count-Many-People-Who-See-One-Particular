@@ -9,7 +9,7 @@ import datetime
 
 face_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_frontalface_alt2.xml')
 #eye_cascade = cv2.CascadeClassifier('cascades/data/haarcascade_eye.xml')
-
+count = 0
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read("trainner.yml")
 
@@ -33,7 +33,7 @@ while(True):
 		roi_color = frame[y:y+h, x:x+w] #(ycord_start, ycord_end) croping foto
 		
 		id_, conf = recognizer.predict(roi_color)
-		if conf>=4: and conf <= 85: # recognise
+		if conf>=4 and conf <= 85: # recognise
 			print(id_)
 			print(labels[id_])
 			font = cv2.FONT_HERSHEY_SIMPLEX
@@ -44,6 +44,7 @@ while(True):
 
 
 		img_item = "my-image.png"
+		count += 1
 		#cv2.imwrite(img_item, roi_color)
 		#cv2.imwrite(x.strftime("%x") + "/people" + str(i) + ".png", roi_color)
 		color = (255, 0, 0) #bgr 0-255
@@ -55,7 +56,7 @@ while(True):
 	cv2.imshow('frame',frame)
 	if cv2.waitKey(20) & 0xFF == ord('q'):
 		break
-
+print (count)
 #when everityng done, realese the capture
 cap.realese()
 cv2.destroyAllWindows()

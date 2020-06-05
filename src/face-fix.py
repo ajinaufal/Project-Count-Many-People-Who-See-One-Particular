@@ -59,6 +59,7 @@ def learningulang():# loop learning
 	#print(x_train)
 	with open("labels.pickle", 'wb') as f:
 		pickle.dump(label_ids, f)
+	
 	recognizer.train(x_train, np.array(y_labels))
 	recognizer.save("trainner.yml")# menyimpan hasil training
 
